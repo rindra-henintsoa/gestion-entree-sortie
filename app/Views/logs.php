@@ -28,13 +28,13 @@
     </tr> -->
     <?php //foreach ($logs as $log): ?>
     <tr>
-        <td><?= //esc($log['name']) ?></td>
-        <td><?= //esc($log['pin']) ?></td>
-        <td><?= //esc($log['cartes']) ?></td>
-        <td><?= //esc($log['premiere_entree']) ?></td>
-        <td><?= //esc($log['derniere_sortie']) ?></td>
-        <td><?= //esc($log['nb_pauses']) ?></td>
-        <td><?= //number_format($log['volume_pause'], 2) ?></td>
+        <td><?php //esc($log['name']) ?></td>
+        <td><?php //esc($log['pin']) ?></td>
+        <td><?php //esc($log['cartes']) ?></td>
+        <td><?php //esc($log['premiere_entree']) ?></td>
+        <td><?php //esc($log['derniere_sortie']) ?></td>
+        <td><?php //esc($log['nb_pauses']) ?></td>
+        <td><?php //number_format($log['volume_pause'], 2) ?></td>
     </tr>
     <?php //endforeach; ?>
 </table>
