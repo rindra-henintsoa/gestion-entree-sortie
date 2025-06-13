@@ -27,7 +27,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="<?= route_to('logs') ?>">
-                            Filtre des logs
+                            Log des collaborateurs
                         </a>
                     </li>
                 </ul>
