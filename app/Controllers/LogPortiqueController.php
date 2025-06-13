@@ -10,7 +10,7 @@ class LogPortiqueController extends BaseController
     {
         $model = new LogPortiqueModel();
 
-        $perPage = 40;
+        $perPage = 20;
         $page = (int) $this->request->getVar('page') ?: 1;
         if ($page < 1) $page = 1;
 
@@ -30,18 +30,28 @@ class LogPortiqueController extends BaseController
 
     public function logs()
     {
+        $date = $this->request->getGet('date') ?: date('Y-m-d');
         $model = new LogPortiqueModel();
-        $date = $this->request->getVar('date');
 
-        $logs = [];
+        $perPage = 20;
+        $currentPage = (int) $this->request->getVar('page') ?: 1;
+        if ($currentPage < 1) $currentPage = 1;
 
-        if ($date) {
-            $logs = $model->getLogsParDate($date);
-        }
+        $offset = ($currentPage - 1) * $perPage;
+
+        $logs = $model->getLogsParDate($date, $perPage, $offset);
+        $total = $model->countLogsParDate($date);
+        $totalPages = ceil($total / $perPage);
+
+        $volumesPause = $model->getVolumePauseParCollaborateur($date);
 
         return view('logs', [
             'logs' => $logs,
+            'volumesPause' => $volumesPause,
             'date' => $date,
+            'currentPage' => $currentPage,
+            'totalPages' => $totalPages,
+            'total' => $total
         ]);
     }
 }
